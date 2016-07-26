@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<template
+    format="3"
+    revision="1"
+    name="Google MVP"
+    minApi="7"
+    minBuildApi="14"
+    description="Creates a Google MVP configuration.">
+
+    <category value="Activity" />
+    <formfactor value="Mobile" />
+
+    <parameter
+        id="activityClass"
+        name="Activity Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="MainActivity"
+        help="The name of the activity class to create" />
+
+    <parameter
+        id="activityLayoutName"
+        name="Activity Layout Name"
+        type="string"
+        constraints="layout|unique|nonempty"
+        suggest="${classToResource(activityClass)}_act"
+        help="The name of the layout to create for the activity" />
+
+    <parameter
+        id="contractClass"
+        name="Contract Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        suggest="${underscoreToCamelCase(classToResource(activityClass))}Contract"
+        help="The name of the contract" />
+
+    <parameter
+        id="presenterClass"
+        name="Presenter Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        suggest="${underscoreToCamelCase(classToResource(activityClass))}Presenter"
+        help="The name of the presenter" />
+
+    <parameter
+        id="fragmentClass"
+        name="Fragment Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        suggest="${underscoreToCamelCase(classToResource(activityClass))}Fragment"
+        help="The name of the fragment" />
+
+    <parameter
+        id="fragmentLayoutName"
+        name="Fragment Layout Name"
+        type="string"
+        constraints="layout|unique|nonempty"
+        suggest="${classToResource(activityClass)}_frag"
+        help="The name of the layout to create for the fragment" />
+
+    <!-- 128x128 thumbnails relative to template.xml -->
+    <thumbs>
+        <!-- default thumbnail is required -->
+        <thumb>template_swiperefreshlayout_activity.png</thumb>
+        
+    </thumbs>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>
